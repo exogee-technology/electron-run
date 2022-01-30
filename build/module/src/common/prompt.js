@@ -1,0 +1,27 @@
+import readline from 'readline';
+import { green } from 'colorette';
+export function prompt(question) {
+    const input = process.stdin;
+    const output = process.stdout;
+    const rl = readline.createInterface({
+        input,
+        output,
+    });
+    const questionAndPrompt = `${green('?')} ${question} (Y/n) `;
+    let answerResolve = () => { };
+    const answerPromise = new Promise((r) => {
+        answerResolve = r;
+    });
+    rl.question(questionAndPrompt, (answer) => {
+        answerResolve(answer === 'Y' || answer == 'y');
+        rl.close();
+    });
+    return [
+        () => answerPromise,
+        () => {
+            console.log('');
+            rl.close();
+        },
+    ];
+}
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoicHJvbXB0LmpzIiwic291cmNlUm9vdCI6IiIsInNvdXJjZXMiOlsiLi4vLi4vLi4vLi4vc3JjL2NvbW1vbi9wcm9tcHQudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUEsT0FBTyxRQUFRLE1BQU0sVUFBVSxDQUFDO0FBRWhDLE9BQU8sRUFBRSxLQUFLLEVBQUUsTUFBTSxXQUFXLENBQUM7QUFFbEMsTUFBTSxVQUFVLE1BQU0sQ0FBQyxRQUFnQjtJQUNyQyxNQUFNLEtBQUssR0FBRyxPQUFPLENBQUMsS0FBSyxDQUFDO0lBQzVCLE1BQU0sTUFBTSxHQUFHLE9BQU8sQ0FBQyxNQUFNLENBQUM7SUFFOUIsTUFBTSxFQUFFLEdBQUcsUUFBUSxDQUFDLGVBQWUsQ0FBQztRQUNsQyxLQUFLO1FBQ0wsTUFBTTtLQUNQLENBQUMsQ0FBQztJQUVILE1BQU0saUJBQWlCLEdBQUcsR0FBRyxLQUFLLENBQUMsR0FBRyxDQUFDLElBQUksUUFBUSxTQUFTLENBQUM7SUFFN0QsSUFBSSxhQUFhLEdBQThCLEdBQUcsRUFBRSxHQUFFLENBQUMsQ0FBQztJQUN4RCxNQUFNLGFBQWEsR0FBRyxJQUFJLE9BQU8sQ0FBVSxDQUFDLENBQUMsRUFBRSxFQUFFO1FBQy9DLGFBQWEsR0FBRyxDQUFDLENBQUM7SUFDcEIsQ0FBQyxDQUFDLENBQUM7SUFFSCxFQUFFLENBQUMsUUFBUSxDQUFDLGlCQUFpQixFQUFFLENBQUMsTUFBTSxFQUFFLEVBQUU7UUFDeEMsYUFBYSxDQUFDLE1BQU0sS0FBSyxHQUFHLElBQUksTUFBTSxJQUFJLEdBQUcsQ0FBQyxDQUFDO1FBQy9DLEVBQUUsQ0FBQyxLQUFLLEVBQUUsQ0FBQztJQUNiLENBQUMsQ0FBQyxDQUFDO0lBRUgsT0FBTztRQUNMLEdBQUcsRUFBRSxDQUFDLGFBQWE7UUFDbkIsR0FBRyxFQUFFO1lBQ0gsT0FBTyxDQUFDLEdBQUcsQ0FBQyxFQUFFLENBQUMsQ0FBQztZQUNoQixFQUFFLENBQUMsS0FBSyxFQUFFLENBQUM7UUFDYixDQUFDO0tBQ0YsQ0FBQztBQUNKLENBQUMifQ==

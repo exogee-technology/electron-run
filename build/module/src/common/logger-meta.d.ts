@@ -1,0 +1,11 @@
+export declare const consoleMessagePrefix: string;
+export declare const consoleViteMessagePrefix = "[vite]";
+export declare const cannotFoundTSConfigMessage: (writePath: string) => string;
+export declare const cannotFoundViteConfigMessage: (writePath: string) => string;
+export declare const cannotFoundESBuildConfigMessage: string;
+export declare const cannotFoundEntryScriptOrViteRootPath: (cwd: string) => string;
+export declare const cannotFoundPackageJsonMessage = "Could not find a valid 'package.json'.";
+export declare const startMessage: string;
+export declare const finishMessage: string;
+export declare const finishBuildMessage: string;
+export declare const warnPreloadMessage = "warn preload path.";
